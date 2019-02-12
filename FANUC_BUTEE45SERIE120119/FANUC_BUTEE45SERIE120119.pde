@@ -153,7 +153,7 @@ void draw()
 
   lectureBuffer();
   //-- Affichage mouse--
-  text(mouseX+"  "+mouseY, 1235, 37);
+  text(" "+"  "+" ", 1235, 37);
 }
 
 
@@ -203,7 +203,8 @@ void AffichageTags(String[] tags) {  // This function also does not return a val
   if (int(tags[4])==2) text(" PRG2", 840, 30);
   if (int(tags[4])==4) text(" PRG3", 840, 30);
   if (int(tags[4])==8) text(" PRG4", 840, 30);
-  //}
+  text("Exemple 2.41 introduire 2.410." , 500, 400);
+  text("Si pour par exemple 1.95 on lit 1.90 introduire 1.959 pour lire 1.95 cause arrondi." , 500, 420);
 }
 //*********************************
 //-- Event bouton Aff
@@ -217,6 +218,7 @@ public void Add() {
   myPort.write("5VF4");
   myPort.write(cp5.get(Textfield.class, "DB").getText());
   myPort.write(13);
+  cp5.get(Textfield.class, "DB").clear();
 }
 //*********************************
 //-- Event bouton ADD2
@@ -224,6 +226,7 @@ public void Add2() {
   myPort.write("6VF4");
   myPort.write(cp5.get(Textfield.class, "DB2").getText());
   myPort.write(13);
+  cp5.get(Textfield.class, "DB2").clear();
 }
 //*********************************
 //-- Event bouton ADD3
@@ -231,6 +234,7 @@ public void Add3() {
   myPort.write("5VF5");
   myPort.write(cp5.get(Textfield.class, "DB3").getText());
   myPort.write(13);
+  cp5.get(Textfield.class, "DB3").clear();
 }
 //*********************************
 //-- Event bouton ADD4
@@ -238,6 +242,7 @@ public void Add4() {
   myPort.write("6VF5");
   myPort.write(cp5.get(Textfield.class, "DB4").getText());
   myPort.write(13);
+  cp5.get(Textfield.class, "DB4").clear();
 }
 //***********************************
 //-- Event bouton CLEAR

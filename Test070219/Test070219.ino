@@ -64,27 +64,27 @@ void setup()
   delay(2000);
   lcd.clear();
   //------------------------------------------------------------------------------------------Appli Mac
-  //sauverInt(0, 250);
-  //  sauverInt(2, 251);
-  //   sauverInt(4, 252);
-  //    sauverInt(6, 253);
+  //sauverInt(0, 191);
+  //sauverInt(2, 241);
+  //  sauverInt(4,0);
+  //  sauverInt(6, 0);
   //
-  // sauverInt(8, 260);
-  //  sauverInt(10, 261);
-  //   sauverInt(12, 262);
-  //    sauverInt(14, 263);
+  //  sauverInt(8, 0);
+  //  sauverInt(10, 0);
+  //  sauverInt(12, 0);
+  //  sauverInt(14, 0);
+  //
+  //
+  //  sauverInt(16, 0);
+  //  sauverInt(18, 0);
+  //  sauverInt(20, 0);
+  //  sauverInt(22, 0);
+  //
+  //  sauverInt(24, 0);
+  //  sauverInt(26, 0);
+  //  sauverInt(28, 0);
+  //  sauverInt(30, 0);
 
-
-  //sauverInt(16, 10000);
-  //  sauverInt(18, 10000);
-  //   sauverInt(20, 10000);
-  //    sauverInt(22, 10000);
-  //
-  // sauverInt(24, 5000);
-  //  sauverInt(26, 5000);
-  sauverInt(28, 5000);
-  //    sauverInt(30, 5000);
-  //
 
   pinMode(2, INPUT);
   pinMode(3, INPUT);
@@ -102,6 +102,7 @@ void setup()
 
   Serial3.begin(9600, SERIAL_7O1);
   //-------------------------------------------------------Appel LecturePrg
+  LectureEprom();
   LecturePrg();
 }
 
@@ -114,30 +115,30 @@ void loop()
     case 1:
       LectureEprom();
       seq = 2;
-      break;
+    //break;
 
     case 2:
       LecturePrg();
       seq = 3;
-      break;
+    //break;
 
     case 3:
-      AffichageParam();
+      Reception();//AffichageParam();
       seq = 4;
-      break;
+    //break;
 
     case 4:
-      Reception();
+      AffichageParam();//Reception();
       seq = 5;
-      break;
+    //break;
 
     case 5:
       EcritureVersGE();
       seq = 1;
-      break;
+      //break;
   }
 
-  delay(200);
+  delay(1000);
 
 }
 
@@ -196,9 +197,9 @@ void LecturePrg()
   //lcd.setCursor(2, 0);
   //lcd.print(val3);
 
-  //lcd.setCursor(0, 0);
+  lcd.setCursor(0, 0);
   prog = val + (val1 << 1) + (val2 << 2) + (val3 << 3);
-  //lcd.print(prog);
+  lcd.print(prog);
   //prog = val | val1;
 
 
@@ -440,6 +441,7 @@ void Reception() {
 
 //--------------------------------------------------------------------------Affichage Parametres vbers Serial vers processing
 void AffichageParam() {
+  String StringVal = "";
   if (Lu == 0) {
     Lu = 1;
     Serial.println(Lu);
@@ -451,15 +453,15 @@ void AffichageParam() {
 
     dtostrf( P6VF4, 1, 3, charVal);
     //lcd.setCursor(2, 1);
-    //lcd.print(charVal);
+    //lcd.print(StringVal);
     TramProc = TramProc + charVal + "/";
 
-    dtostrf( P5VF5, 5, 0, charVal);
+    dtostrf( P5VF5, 4, 0, charVal);
     //lcd.setCursor(9, 0);
     //lcd.print(charVal);
     TramProc = TramProc + charVal + "/";
 
-    dtostrf( P6VF5, 5, 0, charVal);
+    dtostrf( P6VF5, 4, 0, charVal);
     //lcd.setCursor(9, 1);
     //lcd.print(charVal);
     TramProc = TramProc + charVal + "/";
